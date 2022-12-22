@@ -1,4 +1,4 @@
-import {useGoogleLogout} from "react-google-login";
+import {useGoogleLogout} from "@leecheuk/react-google-login";
 import {Button} from "@mui/material";
 import {useActions} from "../../../hooks/useActions";
 import {useDispatch} from "react-redux";

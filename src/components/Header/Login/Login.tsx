@@ -1,5 +1,5 @@
 import React from 'react';
-import {useGoogleLogin} from "react-google-login";
+import {useGoogleLogin} from "@leecheuk/react-google-login";
 import {Button} from "@mui/material";
 import {useActions} from "../../../hooks/useActions";
 import {useDispatch} from "react-redux";
