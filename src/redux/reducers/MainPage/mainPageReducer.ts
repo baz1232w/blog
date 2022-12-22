@@ -32,7 +32,8 @@ export const mainPageReducer = (state = initialState, actions: MainPageActions):
         case MainPageAC.ADD_BLOG_ITEM:
             return {
                 ...state,
-                blogs: [...state.blogs, actions.payload]
+                blogs: [...state.blogs, actions.payload],
+                totalItems: state.totalItems + 1
             }
         case MainPageAC.SIGN_IN_OUT:
             return {

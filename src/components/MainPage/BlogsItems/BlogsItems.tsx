@@ -14,12 +14,13 @@ interface props {
 export const BlogsItems: React.FC<props> = ({blogs,isLogin,userId,deleteBlogItem}) => {
     const [isDeleting,setIsDeleting] = useState(false)
 
-    const deleteItem = (itemId:string) => {
+    const deleteItem = async (itemId:string,id:string) => {
         if(itemId !== userId){
             return console.log('You cat delete not your post!')
         }
         setIsDeleting(true)
-        deleteBlogItem(itemId)
+        await deleteBlogItem(id)
+        setIsDeleting(false)
     }
 
     return (
@@ -45,8 +46,8 @@ export const BlogsItems: React.FC<props> = ({blogs,isLogin,userId,deleteBlogItem
                                     <Typography variant="caption" component="p">
                                         By {el.username} Posted:{el.date}
                                     </Typography>
-                                    {isLogin &&
-                                        (isDeleting ? <CircularProgress/> : <DeleteForever onClick={()=>deleteItem(el.googleId)}/> )
+                                    {isLogin && el.googleId === userId &&
+                                        (isDeleting ? <CircularProgress/> : <DeleteForever onClick={()=>deleteItem(el.googleId,el.id)}/> )
                                     }
                                 </Stack>
                             </Box>
